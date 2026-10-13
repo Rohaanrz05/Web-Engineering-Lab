@@ -1,249 +1,410 @@
-/* --- Global Reset & Page Setup --- */
+/* =========================================================
+   TASK 2 REQUIREMENT: Global Times New Roman font family
+   ========================================================= */
 * {
   box-sizing: border-box;
+}
+
+html, body {
   margin: 0;
   padding: 0;
-}
-
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-  background-color: #f8fafc;
-  color: #333333;
-  line-height: 1.5;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-}
-
-/* --- Task 8: Accessible Skip Link --- */
-.skip-link {
-  position: absolute;
-  left: 16px;
-  top: -60px;
-  background: #ffffff;
-  color: #0b3d91;
-  padding: 8px 14px;
-  text-decoration: none;
-  font-weight: 700;
-  border: 2px solid #0b3d91;
-  border-radius: 4px;
-  z-index: 1000;
-  transition: top 0.2s ease-in-out;
-}
-
-.skip-link:focus {
-  top: 14px;
-}
-
-/* --- Task 8: Accessible Focus Indicator --- */
-a:focus-visible,
-button:focus-visible,
-input:focus-visible,
-textarea:focus-visible {
-  outline: 3px solid #0b5fff;
-  outline-offset: 2px;
-}
-
-/* --- Header & Navigation Banner --- */
-.site-header {
-  background-color: #0b4db7;
-  color: #ffffff;
-  padding: 24px 32px 0 32px;
-}
-
-.site-title {
-  font-size: 0.8rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  opacity: 0.85;
-  margin-bottom: 4px;
-}
-
-.site-header h1 {
-  font-size: 1.8rem;
-  margin-bottom: 20px;
-  font-weight: 700;
-}
-
-.site-header nav ul {
-  list-style: none;
-  display: flex;
-  gap: 8px;
-}
-
-.site-header nav a {
-  display: inline-block;
-  padding: 10px 18px;
-  background: #ffffff;
-  color: #0b4db7;
-  text-decoration: none;
-  font-size: 0.95rem;
-  font-weight: 600;
-  border-radius: 4px 4px 0 0;
-}
-
-.site-header nav a[aria-current="location"] {
-  background: #ffffff;
-  color: #0b4db7;
-}
-
-.site-header nav a:not([aria-current="location"]) {
-  background: rgba(255, 255, 255, 0.15);
-  color: #ffffff;
-}
-
-/* --- Main Layout Container --- */
-main {
-  max-width: 640px;
-  width: 100%;
-  margin: 32px auto;
-  padding: 0 16px;
-  flex: 1;
-}
-
-/* Card wrappers for sections */
-section {
-  background: #ffffff;
-  border: 1px solid #e2e8f0;
-  border-radius: 8px;
-  padding: 24px 28px;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04);
-}
-
-section h2 {
-  font-size: 1.3rem;
-  color: #0b3d91;
-  margin-bottom: 12px;
-}
-
-/* --- Office Hours Section --- */
-.schedule-container {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 20px;
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse;
-  font-size: 0.9rem;
-}
-
-caption {
-  text-align: left;
-  font-size: 0.85rem;
-  color: #64748b;
-  margin-bottom: 8px;
-}
-
-th, td {
-  padding: 8px 12px;
-  text-align: left;
-  border-bottom: 1px solid #edf2f7;
-}
-
-thead th {
-  background-color: #f1f5f9;
+  font-family: "Times New Roman", Times, serif; /* Task 2 mandatory font */
+  background: #0f172a; /* Deep modern dark slate background */
   color: #334155;
-  font-weight: 600;
+  line-height: 1.5;
 }
 
-figure {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+/* Page Showcase Container */
+.page-wrapper {
+  max-width: 1040px;
+  margin: 40px auto;
+  padding: 0 20px 80px;
+}
+
+.showcase-header {
   text-align: center;
-  min-width: 130px;
+  margin-bottom: 35px;
+  color: #f8fafc;
 }
 
-figure figcaption {
-  font-size: 0.75rem;
-  color: #64748b;
-  margin-top: 6px;
-}
-
-/* --- Decorative Divider --- */
-.divider-wrapper {
-  text-align: center;
-  margin: 16px 0;
-}
-
-/* --- Form Section --- */
-.form-group {
-  margin-bottom: 16px;
-  display: flex;
-  flex-direction: column;
-}
-
-.form-group label {
-  font-size: 0.9rem;
-  font-weight: 600;
+.showcase-header h1 {
+  font-size: 2.5rem;
+  letter-spacing: 1px;
   margin-bottom: 6px;
 }
 
-.form-group input,
-.form-group textarea {
-  width: 100%;
-  padding: 8px 12px;
-  border: 1px solid #cbd5e1;
-  border-radius: 4px;
-  font-size: 0.95rem;
-  font-family: inherit;
+.showcase-header p {
+  color: #94a3b8;
+  font-size: 1.1rem;
 }
 
-.hint {
-  display: block;
-  font-size: 0.8rem;
-  color: #64748b;
-  margin-top: 4px;
+/* Clean UI Section Cards */
+.task-card {
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 28px;
+  margin-bottom: 28px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25), 0 8px 10px -6px rgba(0, 0, 0, 0.2);
 }
 
-fieldset {
-  border: 1px solid #e2e8f0;
-  border-radius: 4px;
-  padding: 10px 14px;
-  margin-bottom: 16px;
+.task-badge {
+  display: inline-block;
+  background: #e2e8f0;
+  color: #0f172a;
+  font-size: 0.85rem;
+  font-weight: bold;
+  padding: 4px 10px;
+  border-radius: 20px;
+  margin-bottom: 12px;
+  letter-spacing: 0.5px;
 }
 
-fieldset legend {
-  font-size: 0.9rem;
-  font-weight: 600;
-  padding: 0 4px;
+.task-desc {
+  margin-top: 0;
+  margin-bottom: 18px;
+  font-size: 1.1rem;
+  color: #1e293b;
+  font-weight: bold;
 }
 
-fieldset label {
-  margin-right: 16px;
-  font-size: 0.9rem;
-  cursor: pointer;
+/* =========================================================
+   TASK 1: Headings coloured red, green button from style.css
+   ========================================================= */
+.heading {
+  color: red; /* Task 1: h1-h3 colored red via shared class */
+  margin: 6px 0;
 }
 
-button[type="submit"] {
-  background-color: #0b4db7;
+.btn-external {
+  background-color: green; /* Task 1: green button from style.css */
   color: #ffffff;
   border: none;
-  padding: 10px 20px;
-  font-size: 0.95rem;
-  font-weight: 600;
-  border-radius: 4px;
+  padding: 10px 18px;
+  font-size: 15px;
+  border-radius: 6px;
   cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
 }
 
-button[type="submit"]:hover {
-  background-color: #093c8f;
+/* =========================================================
+   TASK 2: Centred & Capitalised Heading
+   ========================================================= */
+.centred-heading {
+  text-align: center;          /* Task 2: Centred on page */
+  text-transform: capitalize;   /* Task 2: Capitalised by default */
+  font-size: 2.2rem;
+  color: #0f172a;
+  margin: 10px 0;
 }
 
-/* --- Footer --- */
-footer {
-  text-align: center;
-  padding: 24px;
-  border-top: 1px solid #e2e8f0;
-  background-color: #ffffff;
-  margin-top: auto;
+/* =========================================================
+   TASK 3: Outer 25px, Inner 10px using rem and em
+   ========================================================= */
+.comparison-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
 }
 
-address {
-  font-style: normal;
-  font-size: 0.85rem;
+/* rem version (relative to root 16px): 25/16 = 1.5625rem; 10/16 = 0.625rem */
+.outer-rem {
+  font-size: 1.5625rem;
+  background: #f1f5f9;
+  padding: 18px;
+  border-radius: 8px;
+  border-left: 5px solid #3b82f6;
+}
+
+.inner-rem {
+  font-size: 0.625rem;
+  color: #2563eb;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+/* em version (relative to parent): 1.5625em outer; 10/25 = 0.4em inner */
+.outer-em {
+  font-size: 1.5625em;
+  background: #f1f5f9;
+  padding: 18px;
+  border-radius: 8px;
+  border-left: 5px solid #10b981;
+}
+
+.inner-em {
+  font-size: 0.4em;
+  color: #059669;
+  font-weight: bold;
+  margin-top: 6px;
+}
+
+.unit-note {
+  font-size: 0.95rem;
   color: #64748b;
+  margin-top: 14px;
+}
+
+/* =========================================================
+   TASK 4: Navbar 60px high, #0f1111 bg, #f08804 logo & button
+   ========================================================= */
+.navbar {
+  height: 60px;                /* Task 4: 60px high */
+  background-color: #0f1111;   /* Task 4: #0f1111 background */
+  display: flex;               /* Task 4: Flexbox */
+  align-items: center;         /* Task 4: single line */
+  justify-content: space-evenly; /* Task 4: spaced evenly */
+  padding: 0 16px;
+  border-radius: 8px;
+}
+
+.navbar-logo {
+  color: #f08804;              /* Task 4: #f08804 logo */
+  font-size: 25px;             /* Task 4: 25px size */
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  gap: 20px;
+}
+
+.nav-links a {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.nav-links a:hover {
+  color: #f08804;
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
+}
+
+.search-box input {
+  height: 34px;
+  padding: 0 10px;
+  border: none;
+  border-radius: 4px 0 0 4px;
+  outline: none;
+  font-size: 14px;
+}
+
+.search-box button {
+  height: 34px;
+  background-color: #f08804;   /* Task 4: #f08804 button */
+  border: none;
+  padding: 0 16px;
+  cursor: pointer;
+  font-weight: bold;
+  border-radius: 0 4px 4px 0;
+  color: #111;
+}
+
+/* =========================================================
+   TASK 5: Three 100px divs, borders, 0.5 opacity colours
+   ========================================================= */
+.task5-boxes-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 30px;
+  padding: 24px 0;
+}
+
+.task5-box {
+  width: 100px;                /* Task 5: 100px */
+  height: 100px;               /* Task 5: 100px */
+  border: 3px solid #1e293b;   /* Task 5: each with a border */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.task5-box-1 {
+  background-color: rgba(239, 68, 68, 0.5);   /* Red @ 0.5 opacity */
+}
+
+.task5-box-2 {
+  background-color: rgba(34, 197, 94, 0.5);  /* Green @ 0.5 opacity */
+}
+
+.task5-box-3 {
+  background-color: rgba(59, 130, 246, 0.5); /* Blue @ 0.5 opacity */
+  border-radius: 50%;                         /* Task 5: circle with border-radius: 50% */
+}
+
+.layout-footer {
+  background-color: #0f1111;
+  color: #94a3b8;
+  text-align: center;
+  padding: 14px;
+  border-radius: 8px;
+  margin-top: 14px;
+}
+
+/* =========================================================
+   TASK 6: Fixed "Love Nature" Div on Right Edge with z-index
+   ========================================================= */
+.fixed-nature {
+  position: fixed;             /* Task 6: fixed */
+  top: 50%;
+  right: 0;                    /* Task 6: fixed to right edge */
+  transform: translateY(-50%);
+  width: 140px;
+  height: 110px;
+  z-index: 9999;               /* Task 6: z-index keep on top */
+  
+  background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=400&q=80');
+  background-size: cover;
+  background-position: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+  border-radius: 10px 0 0 10px;
+  border: 2px solid #ffffff;
+  border-right: none;
+  box-shadow: -4px 6px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* =========================================================
+   TASK 7: Centering with Flexbox (align-items vs align-self)
+   ========================================================= */
+.outer-flex-box {
+  width: 100%;
+  height: 200px;
+  background: #f1f5f9;
+  border-radius: 8px;
+  
+  /* Flexbox Centering */
+  display: flex;
+  justify-content: center;     /* Horizontally centers */
+  align-items: center;         /* Vertically centers */
+}
+
+.inner-flex-box {
+  width: 100px;
+  height: 100px;
+  background-color: #6366f1;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+/* =========================================================
+   TASK 8: Media Queries for Div Color
+   ========================================================= */
+.responsive-box {
+  width: 100%;
+  max-width: 320px;
+  height: 90px;
+  margin: 12px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #ffffff;
+  font-weight: bold;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+/* 1. Green below 300px */
+@media (max-width: 299.98px) {
+  .responsive-box {
+    background-color: green;
+  }
+}
+
+/* 2. Pink between 300px and 400px */
+@media (min-width: 300px) and (max-width: 400px) {
+  .responsive-box {
+    background-color: pink;
+    color: #1e293b;
+  }
+}
+
+/* 3. Red between 400.02px and 600px */
+@media (min-width: 400.02px) and (max-width: 600px) {
+  .responsive-box {
+    background-color: red;
+  }
+}
+
+/* 4. Blue above 600px */
+@media (min-width: 600.02px) {
+  .responsive-box {
+    background-color: blue;
+  }
+}
+
+/* =========================================================
+   TASK 9: Button Hover Transition (Grow Font + Rotate)
+   ========================================================= */
+.task9-container {
+  display: flex;
+  justify-content: center;
+  padding: 16px 0;
+}
+
+.animated-button {
+  padding: 14px 28px;
+  font-size: 16px;
+  background: linear-gradient(135deg, #0284c7, #2563eb);
+  color: #ffffff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-family: inherit;
+  font-weight: bold;
+  transform: rotate(0deg);
+  box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+  
+  /* Smooth transition for font-size and transform */
+  transition: font-size 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.animated-button:hover {
+  font-size: 22px;             /* Grows font size */
+  transform: rotate(8deg);     /* Rotates slightly */
+  box-shadow: 0 8px 18px rgba(37, 99, 235, 0.5);
+}
+
+/* =========================================================
+   TASK 10: Infinite Spinning Circular Loader
+   ========================================================= */
+.loader-container {
+  display: flex;
+  justify-content: center;
+  padding: 20px 0;
+}
+
+.loader {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;          /* Circular */
+  border: 7px solid #e2e8f0;   /* Thick border */
+  border-top: 7px solid #0284c7; /* Coloured on one side only */
+  animation: spin 1s linear infinite; /* Infinitely spinning */
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Task 1: Viewport meta tag -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="light dark">
+  <title>Lab 04 - Event Schedule & Booking</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Task 6: Header flex container (title left, navigation right) -->
+  <header>
+    <div class="brand">
+      <!-- Task 5: SVG icon utilizing currentColor -->
+      <svg class="icon" viewBox="0 0 24 24" width="28" height="28" fill="currentColor" aria-hidden="true">
+        <path d="M19 4h-1V2h-2v2H8V2H6v2H5c-1.11 0-1.99.9-1.99 2L3 20c0 1.1.89 2 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zm0-12H5V6h14v2z"/>
+      </svg>
+      <span>DevSummit 2026</span>
+    </div>
+    
+    <nav aria-label="Main Navigation">
+      <!-- Task 2: nav-link elements -->
+      <ul>
+        <li><a href="#schedule" class="nav-link">Schedule</a></li>
+        <li><a href="#register" class="nav-link">Register</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Task 1: main constrained with logical properties -->
+  <main>
+    <!-- Task 7: #schedule grid container -->
+    <section id="schedule" aria-labelledby="schedule-heading">
+      <h2 id="schedule-heading" class="span-all">Workshop Schedule</h2>
+
+      <div class="table-wrapper">
+        <table class="schedule-table">
+          <thead>
+            <tr>
+              <th scope="col">Day</th>
+              <th scope="col">Topic</th>
+              <th scope="col">Speaker</th>
+              <!-- Task 9: Book column -->
+              <th scope="col">Action</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Monday</td>
+              <td>Modern CSS Architecture &amp; Layers</td>
+              <td>Alex Rivera</td>
+              <td>
+                <button type="button" class="btn-book" data-day="Monday">Book</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Tuesday</td>
+              <td>Asynchronous JS &amp; Event Loops</td>
+              <td>Sophia Chen</td>
+              <td>
+                <button type="button" class="btn-book" data-day="Tuesday">Book</button>
+              </td>
+            </tr>
+            <tr>
+              <td>Wednesday</td>
+              <td>Responsive Logical Layouts</td>
+              <td>Marcus Bell</td>
+              <td>
+                <button type="button" class="btn-book" data-day="Wednesday">Book</button>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <aside class="schedule-summary">
+        <h3>Booking Overview</h3>
+        <!-- Task 3: .text-muted utility -->
+        <p class="text-muted">Select sessions you wish to attend during the summit.</p>
+        <!-- Task 9: Live status feedback -->
+        <div id="booking-status" role="status" aria-live="polite">
+          No sessions selected yet.
+        </div>
+      </aside>
+    </section>
+
+    <!-- Task 7: Two-column form grid -->
+    <section id="register" aria-labelledby="register-heading">
+      <form class="booking-form" novalidate>
+        <h2 id="register-heading" class="span-all">Attendee Registration</h2>
+        
+        <div class="form-group">
+          <label for="first-name">First Name</label>
+          <input type="text" id="first-name" name="firstName" required autocomplete="given-name">
+        </div>
+
+        <div class="form-group">
+          <label for="last-name">Last Name</label>
+          <input type="text" id="last-name" name="lastName" required autocomplete="family-name">
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+
+        <div class="form-group">
+          <label for="role">Primary Track</label>
+          <select id="role" name="role">
+            <option value="frontend">Frontend Engineering</option>
+            <option value="backend">Backend Systems</option>
+            <option value="fullstack">Full Stack Architecture</option>
+          </select>
+        </div>
+
+        <!-- Task 7: fieldset with .span-all -->
+        <fieldset class="span-all">
+          <legend>Preferences</legend>
+          <label class="checkbox-label">
+            <input type="checkbox" name="newsletter" checked>
+            Receive event recordings and presentation slides
+          </label>
+        </fieldset>
+
+        <!-- Task 7: message area with .span-all -->
+        <div class="form-group span-all">
+          <label for="notes">Additional Requirements</label>
+          <textarea id="notes" name="notes" rows="4" placeholder="Dietary restrictions, accessibility requests, etc."></textarea>
+        </div>
+
+        <div class="span-all form-actions">
+          <button type="submit" class="btn-primary">Complete Reservation</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <!-- Task 9: Load main.js as ES module -->
+  <script type="module" src="main.js"></script>
+</body>
+</html>

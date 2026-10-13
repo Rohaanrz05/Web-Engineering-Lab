@@ -3,128 +3,592 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Web Engineering Lab</title>
-  <link rel="stylesheet" href="styles.css">
+  <title>CSS Tasks 1–10 Complete Lab</title>
+
+  <style>
+    /* =========================================================
+       GLOBAL & RESET (Task 2 Document Font Requirement)
+       ========================================================= */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Task 2: Document font set to Times New Roman */
+    html, body {
+      margin: 0;
+      padding: 0;
+      font-family: "Times New Roman", Times, serif;
+      background-color: #0b132b;
+      color: #1c2541;
+    }
+
+    /* Page Canvas */
+    .page-wrapper {
+      max-width: 950px;
+      margin: 40px auto;
+      padding: 0 20px 80px;
+    }
+
+    .main-title-card {
+      text-align: center;
+      margin-bottom: 30px;
+      color: #ffffff;
+    }
+
+    .main-title-card h1 {
+      font-size: 2.4rem;
+      margin-bottom: 4px;
+      letter-spacing: 1px;
+    }
+
+    .main-title-card p {
+      color: #94a3b8;
+      font-size: 1.1rem;
+      margin-top: 0;
+    }
+
+    /* UI Cards */
+    .task-card {
+      background: #ffffff;
+      border-radius: 12px;
+      padding: 26px;
+      margin-bottom: 26px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+    }
+
+    .task-badge {
+      display: inline-block;
+      background: #e2e8f0;
+      color: #0b132b;
+      font-size: 0.85rem;
+      font-weight: bold;
+      padding: 4px 12px;
+      border-radius: 20px;
+      letter-spacing: 0.5px;
+    }
+
+    .task-desc {
+      font-size: 1.1rem;
+      color: #1e293b;
+      font-weight: bold;
+      margin: 10px 0 16px 0;
+    }
+
+    /* =========================================================
+       TASK 1: Headings & Cascade Buttons
+       ========================================================= */
+    #box {
+      background-color: blue; /* Task 1: div with id box & blue background */
+      padding: 24px;
+      border-radius: 8px;
+    }
+
+    .heading {
+      color: red; /* Task 1: h1-h3 colored red through shared class */
+      margin: 6px 0;
+    }
+
+    /* Simulated external style.css rule */
+    .btn-style-css {
+      background-color: green; /* Task 1: green from style.css */
+      color: #ffffff;
+      border: none;
+      padding: 10px 18px;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* Simulated internal <style> tag rule */
+    .btn-internal-style {
+      background-color: #1d4ed8; /* Task 1: blue from <style> */
+      color: #ffffff;
+      border: none;
+      padding: 10px 18px;
+      font-size: 15px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+
+    /* =========================================================
+       TASK 2: Centred & Capitalised Heading
+       ========================================================= */
+    .centred-heading {
+      text-align: center;         /* Task 2: centred */
+      text-transform: capitalize;  /* Task 2: capitalised by default */
+      font-size: 2.1rem;
+      color: #0f172a;
+      margin: 10px 0;
+    }
+
+    /* =========================================================
+       TASK 3: 25px Outer & 10px Inner (rem vs em)
+       ========================================================= */
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 16px;
+      margin-bottom: 12px;
+    }
+
+    .outer-rem {
+      font-size: 1.5625rem; /* 1.5625 * 16px = 25px */
+      background: #eff6ff;
+      padding: 16px;
+      border-radius: 8px;
+      border-left: 5px solid #2563eb;
+    }
+
+    .inner-rem {
+      font-size: 0.625rem;  /* 0.625 * 16px = 10px */
+      color: #1d4ed8;
+      font-weight: bold;
+      margin-top: 6px;
+    }
+
+    .outer-em {
+      font-size: 1.5625em;  /* 25px */
+      background: #ecfdf5;
+      padding: 16px;
+      border-radius: 8px;
+      border-left: 5px solid #059669;
+    }
+
+    .inner-em {
+      font-size: 0.4em;     /* 0.4 * 25px = 10px */
+      color: #047857;
+      font-weight: bold;
+      margin-top: 6px;
+    }
+
+    .info-text {
+      font-size: 0.95rem;
+      color: #64748b;
+      line-height: 1.6;
+    }
+
+    /* =========================================================
+       TASK 4: Navbar (60px high, #0f1111 bg, #f08804 accents)
+       ========================================================= */
+    .navbar {
+      height: 60px;                 /* Task 4: 60px high */
+      background-color: #0f1111;    /* Task 4: #0f1111 */
+      display: flex;                /* Task 4: flexbox */
+      align-items: center;          /* Task 4: single line */
+      justify-content: space-evenly;/* Task 4: spaced evenly */
+      padding: 0 16px;
+      border-radius: 8px;
+    }
+
+    .navbar-logo {
+      color: #f08804;               /* Task 4: #f08804 */
+      font-size: 25px;              /* Task 4: 25px */
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 20px;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      font-size: 16px;
+      transition: color 0.2s ease;
+    }
+
+    .nav-links a:hover {
+      color: #f08804;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      height: 34px;
+      padding: 0 10px;
+      border: none;
+      outline: none;
+      border-radius: 4px 0 0 4px;
+    }
+
+    .search-box button {
+      height: 34px;
+      background-color: #f08804;    /* Task 4: #f08804 */
+      color: #111;
+      border: none;
+      padding: 0 16px;
+      cursor: pointer;
+      font-weight: bold;
+      border-radius: 0 4px 4px 0;
+    }
+
+    /* =========================================================
+       TASK 5: Three 100px Divs, 0.5 Opacity Colours, Circle
+       ========================================================= */
+    .task5-boxes-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      gap: 30px;
+      padding: 24px 0;
+    }
+
+    .task5-box {
+      width: 100px;                 /* Task 5: 100px */
+      height: 100px;                /* Task 5: 100px */
+      border: 3px solid #1e293b;    /* Task 5: each with a border */
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    .task5-box-1 {
+      background-color: rgba(239, 68, 68, 0.5);   /* Red @ 0.5 opacity */
+    }
+
+    .task5-box-2 {
+      background-color: rgba(34, 197, 94, 0.5);  /* Green @ 0.5 opacity */
+    }
+
+    .task5-box-3 {
+      background-color: rgba(59, 130, 246, 0.5); /* Blue @ 0.5 opacity */
+      border-radius: 50%;                         /* Task 5: circle */
+    }
+
+    .layout-footer {
+      background-color: #0f1111;
+      color: #94a3b8;
+      text-align: center;
+      padding: 14px;
+      border-radius: 8px;
+      margin-top: 14px;
+    }
+
+    /* =========================================================
+       TASK 6: Fixed "Love Nature" Div with z-index
+       ========================================================= */
+    .fixed-nature {
+      position: fixed;              /* Task 6: fixed */
+      top: 50%;
+      right: 0;                     /* Task 6: fixed to right edge */
+      transform: translateY(-50%);
+      width: 140px;
+      height: 110px;
+      z-index: 9999;                /* Task 6: keep on top */
+      
+      background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=400&q=80');
+      background-size: cover;
+      background-position: center;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-size: 1.15rem;
+      font-weight: bold;
+      text-shadow: 0 2px 4px rgba(0, 0, 0, 0.9);
+      border-radius: 10px 0 0 10px;
+      border: 2px solid #ffffff;
+      border-right: none;
+      box-shadow: -4px 6px 15px rgba(0, 0, 0, 0.4);
+    }
+
+    /* =========================================================
+       TASK 7: Centering with Flexbox
+       ========================================================= */
+    .outer-flex-box {
+      width: 100%;
+      height: 190px;
+      background: #f1f5f9;
+      border-radius: 8px;
+      
+      display: flex;
+      justify-content: center;      /* Centers along main axis */
+      align-items: center;          /* Centers along cross axis */
+    }
+
+    .inner-flex-box {
+      width: 90px;
+      height: 90px;
+      background-color: #ea580c;
+      color: #ffffff;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: bold;
+      border-radius: 8px;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    }
+
+    /* =========================================================
+       TASK 8: Media Queries for Div Color
+       ========================================================= */
+    .responsive-box {
+      width: 100%;
+      max-width: 320px;
+      height: 90px;
+      margin: 12px auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #ffffff;
+      font-weight: bold;
+      border-radius: 8px;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: background-color 0.25s ease;
+    }
+
+    /* 1. Green below 300px */
+    @media (max-width: 299.98px) {
+      .responsive-box {
+        background-color: green;
+      }
+    }
+
+    /* 2. Pink between 300px and 400px */
+    @media (min-width: 300px) and (max-width: 400px) {
+      .responsive-box {
+        background-color: pink;
+        color: #1e293b;
+      }
+    }
+
+    /* 3. Red between 400.02px and 600px */
+    @media (min-width: 400.02px) and (max-width: 600px) {
+      .responsive-box {
+        background-color: red;
+      }
+    }
+
+    /* 4. Blue above 600px */
+    @media (min-width: 600.02px) {
+      .responsive-box {
+        background-color: blue;
+      }
+    }
+
+    /* =========================================================
+       TASK 9: Button Hover Transition (Grow Font + Rotate)
+       ========================================================= */
+    .task9-container {
+      display: flex;
+      justify-content: center;
+      padding: 18px 0;
+    }
+
+    .animated-button {
+      padding: 14px 28px;
+      font-size: 16px;
+      background: linear-gradient(135deg, #0284c7, #2563eb);
+      color: #ffffff;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: bold;
+      transform: rotate(0deg);
+      box-shadow: 0 4px 10px rgba(37, 99, 235, 0.3);
+      
+      /* Task 9: Transition on font-size and transform */
+      transition: font-size 0.3s ease, transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .animated-button:hover {
+      font-size: 22px;             /* Grows font size */
+      transform: rotate(8deg);     /* Rotates slightly */
+      box-shadow: 0 8px 18px rgba(37, 99, 235, 0.5);
+    }
+
+    /* =========================================================
+       TASK 10: Infinite Spinning Circular Loader
+       ========================================================= */
+    .loader-container {
+      display: flex;
+      justify-content: center;
+      padding: 20px 0;
+    }
+
+    .loader {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;          /* Circular */
+      border: 7px solid #e2e8f0;   /* Thick border */
+      border-top: 7px solid #0284c7; /* Coloured on one side only */
+      animation: spin 1s linear infinite; /* Spin from 0deg to 360deg infinite */
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
 </head>
 <body>
-  <!-- Task 1: First focusable skip link -->
-  <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- Task 1 & 9: Header and clean nav landmarks -->
-  <header class="site-header">
-    <p class="site-title">Web Engineering Lab</p>
-    <h1 id="greeting">Hello, World!</h1>
-    <nav>
-      <ul>
-        <li><a href="#schedule" aria-current="location">Office Hours</a></li>
-        <li><a href="#feedback">Send Feedback</a></li>
-      </ul>
-    </nav>
-  </header>
+  <!-- TASK 6: Fixed "Love Nature" Div pinned to right edge with high z-index -->
+  <div class="fixed-nature">Love Nature</div>
 
-  <!-- Task 2: Main container wrapping all primary sections -->
-  <main id="main-content">
-    <!-- Task 3 & 4: Office Hours Section -->
-    <section id="schedule">
-      <h2>Office Hours</h2>
-      <div class="schedule-container">
-        <table>
-          <caption>Weekly office hours</caption>
-          <thead>
-            <tr>
-              <th scope="col">Day</th>
-              <th scope="col">Time</th>
-              <th scope="col">Instructor</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Monday</td>
-              <td><time datetime="10:00">10:00</time>&ndash;<time datetime="11:00">11:00</time></td>
-              <td>Lab Engineer</td>
-            </tr>
-            <tr>
-              <td>Wednesday</td>
-              <td><time datetime="14:00">14:00</time>&ndash;<time datetime="15:00">15:00</time></td>
-              <td>Course Instructor</td>
-            </tr>
-            <tr>
-              <td>Friday</td>
-              <td><time datetime="09:00">09:00</time>&ndash;<time datetime="10:00">10:00</time></td>
-              <td>Lab Engineer</td>
-            </tr>
-          </tbody>
-        </table>
-
-        <!-- Informative graphic -->
-        <figure>
-          <svg role="img" aria-labelledby="pin-title" width="24" height="24" viewBox="0 0 24 24" fill="#d9381e">
-            <title id="pin-title">Location pin</title>
-            <path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"/>
-          </svg>
-          <figcaption>All office hours are held in Room 214.</figcaption>
-        </figure>
-      </div>
-    </section>
-
-    <!-- Task 4: Decorative Divider (hidden from screen readers) -->
-    <div class="divider-wrapper">
-      <svg aria-hidden="true" width="24" height="24" viewBox="0 0 24 24">
-        <circle cx="12" cy="12" r="3" fill="#0b3d91" />
-      </svg>
+  <div class="page-wrapper">
+    
+    <div class="main-title-card">
+      <h1>Web Engineering Lab</h1>
+      <p>Tasks 1 Through 10 Complete Presentation</p>
     </div>
 
-    <!-- Task 5, 6, 7: Send Feedback Section -->
-    <section id="feedback">
-      <h2>Send Feedback</h2>
-      <form action="#" method="post">
-        <!-- Name field -->
-        <div class="form-group">
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required />
+    <!-- TASK 2: Centred Capitalised Heading -->
+    <div class="task-card">
+      <span class="task-badge">Task 2</span>
+      <div class="task-desc">Centred Heading with Default Capitalisation</div>
+      <h1 class="centred-heading">welcome to our web engineering laboratory</h1>
+    </div>
+
+    <!-- TASK 1: Div #box with Red Headings & 3 Cascade Buttons -->
+    <div class="task-card">
+      <span class="task-badge">Task 1</span>
+      <div class="task-desc">Div #box (Blue Background), Red Headings, and 3 Sourced Buttons</div>
+      <div id="box">
+        <h1 class="heading">Heading 1</h1>
+        <h2 class="heading">Heading 2</h2>
+        <h3 class="heading">Heading 3</h3>
+        
+        <div style="margin-top: 16px; display: flex; gap: 12px; flex-wrap: wrap;">
+          <!-- 1. Green button from external/shared stylesheet class -->
+          <button class="btn-style-css">Green (style.css)</button>
+
+          <!-- 2. Blue button from internal <style> tag class -->
+          <button class="btn-internal-style">Blue (&lt;style&gt; tag)</button>
+
+          <!-- 3. Pink button styled inline -->
+          <button style="background-color: pink; color: black; border: none; padding: 10px 18px; font-size: 15px; border-radius: 6px; cursor: pointer; font-family: inherit; font-weight: bold;">
+            Pink (Inline)
+          </button>
         </div>
+      </div>
+    </div>
 
-        <!-- Email field with hint -->
-        <div class="form-group">
-          <label for="email">Email</label>
-          <input 
-            type="email" 
-            id="email" 
-            name="email" 
-            required 
-            aria-describedby="email-hint" 
-          />
-          <span id="email-hint" class="hint">We will only use this to reply to you.</span>
+    <!-- TASK 3: 25px Outer & 10px Inner with rem & em -->
+    <div class="task-card">
+      <span class="task-badge">Task 3</span>
+      <div class="task-desc">Text Sizes (25px Outer, 10px Inner) with rem & em Comparison</div>
+      <div class="comparison-grid">
+        <div class="outer-rem">
+          Outer text (25px via 1.5625rem)
+          <div class="inner-rem">Inner text (10px via 0.625rem)</div>
         </div>
-
-        <!-- Topic fieldset -->
-        <fieldset>
-          <legend>Topic</legend>
-          <label>
-            <input type="radio" name="topic" value="lab" checked /> Lab content
-          </label>
-          <label>
-            <input type="radio" name="topic" value="other" /> Something else
-          </label>
-        </fieldset>
-
-        <!-- Message field -->
-        <div class="form-group">
-          <label for="message">Message</label>
-          <textarea id="message" name="message" rows="4" required></textarea>
+        <div class="outer-em">
+          Outer text (25px via 1.5625em)
+          <div class="inner-em">Inner text (10px via 0.4em of 25px)</div>
         </div>
+      </div>
+      <p class="info-text">
+        <strong>The Difference:</strong> <code>rem</code> (Root EM) scales purely against the root HTML document font size (16px default), so both values remain static and immune to parent cascading. In contrast, <code>em</code> scales relative to the immediate parent's computed font size—hence the child requires <code>0.4em</code> ($25\text{px} \times 0.4 = 10\text{px}$).
+      </p>
+    </div>
 
-        <!-- Submit button -->
-        <button type="submit">Send feedback</button>
-      </form>
-    </section>
-  </main>
+    <!-- TASK 4 & 5: Flexbox Navbar & Layout with Opacity Boxes -->
+    <div class="task-card">
+      <span class="task-badge">Tasks 4 & 5</span>
+      <div class="task-desc">Amazon-Style Navbar (60px high, #0f1111) & Opacity Page Layout</div>
+      
+      <header>
+        <!-- Task 4 Navbar -->
+        <nav class="navbar">
+          <a href="#" class="navbar-logo">AmazonStyle</a>
+          <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#deals">Today's Deals</a>
+            <a href="#registry">Customer Service</a>
+          </div>
+          <div class="search-box">
+            <input type="text" placeholder="Search products...">
+            <button type="button">Search</button>
+          </div>
+        </nav>
+      </header>
 
-  <!-- Task 2: Footer stays at the very bottom -->
-  <footer>
-    <address>Contact your instructor for help &mdash; Room 214, SSCIT</address>
-  </footer>
+      <!-- Task 5 Content Area with Three 100px Divs -->
+      <main class="task5-boxes-container">
+        <div class="task5-box task5-box-1" title="Red at 0.5 opacity"></div>
+        <div class="task5-box task5-box-2" title="Green at 0.5 opacity"></div>
+        <div class="task5-box task5-box-3" title="Blue at 0.5 opacity (circle)"></div>
+      </main>
 
-  <script src="script.js"></script>
+      <!-- Task 5 Footer -->
+      <footer class="layout-footer">
+        &copy; 2026 Layout Demo Footer
+      </footer>
+    </div>
+
+    <!-- TASK 6: Paragraphs with Fixed Nature Div -->
+    <div class="task-card">
+      <span class="task-badge">Task 6</span>
+      <div class="task-desc">Fixed "Love Nature" Div Between Two Filler Paragraphs</div>
+      <p style="background: #f8fafc; padding: 14px; border-radius: 6px; border-left: 4px solid #cbd5e1; line-height: 1.6;">
+        <strong>Paragraph 1:</strong> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer nec odio. Praesent libero. Sed cursus ante dapibus diam. Sed nisi. Nulla quis sem at nibh elementum imperdiet. Duis sagittis ipsum. Praesent mauris. Fusce nec tellus sed augue semper porta.
+      </p>
+
+      <p style="font-size: 0.95rem; color: #64748b; font-style: italic; margin: 8px 0;">
+        (The "Love Nature" element is anchored to the right viewport edge using <code>position: fixed</code> with <code>z-index: 9999</code> so it never moves when you scroll.)
+      </p>
+
+      <p style="background: #f8fafc; padding: 14px; border-radius: 6px; border-left: 4px solid #cbd5e1; line-height: 1.6;">
+        <strong>Paragraph 2:</strong> Vestibulum lacinia arcu eget nulla. Class aptent taciti sociosqu ad litora torquent per conubia nostra, per inceptos himenaeos. Curabitur sodales ligula in libero. Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor.
+      </p>
+    </div>
+
+    <!-- TASK 7: Centering with Flexbox (align-items vs align-self) -->
+    <div class="task-card">
+      <span class="task-badge">Task 7</span>
+      <div class="task-desc">Flexbox Div Centering & Priority Explanation</div>
+      <div class="outer-flex-box">
+        <div class="inner-flex-box">Centered</div>
+      </div>
+      <p class="info-text" style="margin-top: 14px;">
+        <strong>Priority Rule:</strong> <code>align-self</code> has higher priority than <code>align-items</code>. The parent container defines <code>align-items</code> to set the default alignment for all children along the cross-axis, but a child can specify <code>align-self</code> to override the parent rule.
+      </p>
+    </div>
+
+    <!-- TASK 8: Media Queries for Div Color -->
+    <div class="task-card">
+      <span class="task-badge">Task 8</span>
+      <div class="task-desc">Responsive Div Background via Media Queries</div>
+      <p class="info-text">
+        Resize your browser window width to see it change:
+        <strong>&lt;300px</strong> (Green), <strong>300–400px</strong> (Pink),
+        <strong>400–600px</strong> (Red), <strong>&gt;600px</strong> (Blue).
+      </p>
+      <div class="responsive-box">Resize Browser Window</div>
+    </div>
+
+    <!-- TASK 9: Button Hover Transition -->
+    <div class="task-card">
+      <span class="task-badge">Task 9</span>
+      <div class="task-desc">Button Hover Transition (Font Size Growth & Subtle Rotation)</div>
+      <div class="task9-container">
+        <button class="animated-button">Hover Over Me</button>
+      </div>
+    </div>
+
+    <!-- TASK 10: Infinite Spinning Circular Loader -->
+    <div class="task-card">
+      <span class="task-badge">Task 10</span>
+      <div class="task-desc">Infinite Spinning Circular Loader via @keyframes</div>
+      <div class="loader-container">
+        <div class="loader"></div>
+      </div>
+    </div>
+
+  </div>
+
 </body>
 </html>

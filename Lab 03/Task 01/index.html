@@ -1,0 +1,462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 1</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    #box {
+      background-color: blue;
+      padding: 16px;
+    }
+    .heading {
+      color: red;
+    }
+    /* Internal style for the blue button */
+    .btn-internal {
+      background-color: blue;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+  <div id="box">
+    <h1 class="heading">Heading 1</h1>
+    <h2 class="heading">Heading 2</h2>
+    <h3 class="heading">Heading 3</h3>
+    
+    <!-- Button 1: Styled via external style.css -->
+    <button class="btn-external">Green Button</button>
+
+    <!-- Button 2: Styled via internal <style> tag -->
+    <button class="btn-internal">Blue Button</button>
+
+    <!-- Button 3: Styled via inline style -->
+    <button style="background-color: pink; color: black;">Pink Button</button>
+  </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 2</title>
+  <style>
+    /* Global font family applied to the entire document */
+    html, body {
+      font-family: "Times New Roman", Times, serif;
+    }
+
+    .centred-heading {
+      text-align: center;
+      text-transform: capitalize; /* Capitalises the first letter of each word */
+    }
+  </style>
+</head>
+<body>
+  <h1 class="centred-heading">welcome to our web development guide</h1>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 3</title>
+  <style>
+    /* Version A: Using rem (relative to root/html) */
+    .outer-rem {
+      font-size: 1.5625rem; /* 1.5625 * 16px = 25px */
+    }
+    .inner-rem {
+      font-size: 0.625rem;  /* 0.625 * 16px = 10px */
+    }
+
+    /* Version B: Using em (relative to parent) */
+    .outer-em {
+      font-size: 1.5625em;  /* Relative to root/body (16px) -> 25px */
+    }
+    .inner-em {
+      font-size: 0.4em;     /* Relative to .outer-em (25px) -> 0.4 * 25px = 10px */
+    }
+  </style>
+</head>
+<body>
+  <!-- rem example -->
+  <div class="outer-rem">
+    Outer text (25px / 1.5625rem)
+    <div class="inner-rem">Inner text (10px / 0.625rem)</div>
+  </div>
+
+  <br>
+
+  <!-- em example -->
+  <div class="outer-em">
+    Outer text (25px / 1.5625em)
+    <div class="inner-em">Inner text (10px / 0.4em)</div>
+  </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 4</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .navbar {
+      height: 60px;
+      background-color: #0f1111;
+      display: flex;
+      align-items: center;
+      justify-content: space-evenly; /* Even spacing across the single line */
+      box-sizing: border-box;
+      padding: 0 16px;
+    }
+
+    .navbar-logo {
+      color: #f08804;
+      font-size: 25px;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    .nav-links a {
+      color: #ffffff;
+      text-decoration: none;
+      margin: 0 12px;
+    }
+
+    .nav-links a:hover {
+      text-decoration: underline;
+    }
+
+    .search-box {
+      display: flex;
+      align-items: center;
+    }
+
+    .search-box input {
+      height: 30px;
+      padding: 0 8px;
+      border: none;
+      outline: none;
+    }
+
+    .search-box button {
+      height: 30px;
+      background-color: #f08804;
+      border: none;
+      padding: 0 12px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+  <nav class="navbar">
+    <a href="#" class="navbar-logo">BrandLogo</a>
+
+    <div class="nav-links">
+      <a href="#home">Home</a>
+      <a href="#shop">Shop</a>
+      <a href="#contact">Contact</a>
+    </div>
+
+    <div class="search-box">
+      <input type="text" placeholder="Search...">
+      <button type="submit">Search</button>
+    </div>
+  </nav>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 5</title>
+  <style>
+    body {
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      font-family: sans-serif;
+    }
+
+    header {
+      background-color: #0f1111;
+      color: white;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      padding: 0 20px;
+    }
+
+    .content {
+      flex: 1;
+      display: flex;
+      gap: 20px;
+      padding: 30px;
+      align-items: center;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      border: 2px solid #333333;
+      box-sizing: border-box;
+    }
+
+    /* Using rgba ensures only background has 0.5 opacity, not the borders */
+    .box-1 {
+      background-color: rgba(255, 0, 0, 0.5);   /* Red with 0.5 opacity */
+    }
+
+    .box-2 {
+      background-color: rgba(0, 128, 0, 0.5); /* Green with 0.5 opacity */
+    }
+
+    .box-3 {
+      background-color: rgba(0, 0, 255, 0.5);  /* Blue with 0.5 opacity */
+      border-radius: 50%;                     /* Turns into circle */
+    }
+
+    footer {
+      background-color: #232f3e;
+      color: white;
+      padding: 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h2>Header & Navbar</h2>
+  </header>
+
+  <main class="content">
+    <div class="box box-1"></div>
+    <div class="box box-2"></div>
+    <div class="box box-3"></div>
+  </main>
+
+  <footer>
+    <p>&copy; Layout Footer</p>
+  </footer>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 6</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      padding: 20px;
+      line-height: 1.6;
+    }
+
+    .fixed-nature {
+      position: fixed;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+      width: 160px;
+      height: 120px;
+      z-index: 1000; /* Stays above all scrolling content */
+      
+      background-image: url('https://images.unsplash.com/photo-1448375240586-882707db888b?w=300');
+      background-size: cover;
+      background-position: center;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      text-shadow: 1px 1px 4px rgba(0,0,0,0.8);
+      border-radius: 8px 0 0 8px;
+    }
+  </style>
+</head>
+<body>
+  <p>
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque euismod, nisi eu consectetur fermentum,
+    nunc urna hendrerit diam, vel finibus libero libero vel nunc. Fusce dapibus elit sed massa imperdiet elementum.
+    Curabitur quis sapien et magna vehicula tempor. Donec rhoncus erat quis libero fringilla elementum.
+    (Scroll down to test position: fixed)
+  </p>
+
+  <!-- Div placed between the two paragraphs -->
+  <div class="fixed-nature">Love Nature</div>
+
+  <p style="margin-top: 1000px;">
+    Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia curae; Nullam euismod lorem
+    at purus cursus eleifend. Aliquam id libero non diam sodales gravida. Praesent tristique purus et mi tempor,
+    sit amet efficitur augue convallis. The floating box stays anchored to the right edge during scroll.
+  </p>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 7</title>
+  <style>
+    .outer-container {
+      width: 300px;
+      height: 300px;
+      background-color: #e0e0e0;
+      
+      /* Flexbox centering */
+      display: flex;
+      justify-content: center; /* Horizontally centers along main-axis */
+      align-items: center;     /* Vertically centers along cross-axis */
+    }
+
+    .inner-box {
+      width: 100px;
+      height: 100px;
+      background-color: #ff5722;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      /* If uncommented, align-self overrides align-items: */
+      /* align-self: flex-start; */
+    }
+  </style>
+</head>
+<body>
+  <div class="outer-container">
+    <div class="inner-box">Centered</div>
+  </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 7</title>
+  <style>
+    .outer-container {
+      width: 300px;
+      height: 300px;
+      background-color: #e0e0e0;
+      
+      /* Flexbox centering */
+      display: flex;
+      justify-content: center; /* Horizontally centers along main-axis */
+      align-items: center;     /* Vertically centers along cross-axis */
+    }
+
+    .inner-box {
+      width: 100px;
+      height: 100px;
+      background-color: #ff5722;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      
+      /* If uncommented, align-self overrides align-items: */
+      /* align-self: flex-start; */
+    }
+  </style>
+</head>
+<body>
+  <div class="outer-container">
+    <div class="inner-box">Centered</div>
+  </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 9</title>
+  <style>
+    .animated-button {
+      padding: 12px 24px;
+      font-size: 16px;
+      background-color: #4a90e2;
+      color: white;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+      transform: rotate(0deg);
+      
+      /* Smooth transitions for font size and transform */
+      transition: font-size 0.3s ease, transform 0.3s ease;
+    }
+
+    .animated-button:hover {
+      font-size: 22px;
+      transform: rotate(8deg); /* Slightly rotated */
+    }
+  </style>
+</head>
+<body>
+  <div style="padding: 50px;">
+    <button class="animated-button">Hover Me</button>
+  </div>
+</body>
+</html>
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Task 10</title>
+  <style>
+    .loader-container {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 200px;
+    }
+
+    .loader {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      
+      /* Thick transparent/light border on all sides */
+      border: 8px solid #e0e0e0;
+      /* Distinct colour on only one side (top) */
+      border-top: 8px solid #3498db;
+      
+      /* Spin infinitely */
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="loader-container">
+    <div class="loader"></div>
+  </div>
+</body>
+</html>

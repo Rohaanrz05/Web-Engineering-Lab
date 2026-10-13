@@ -1,0 +1,333 @@
+/* Task 3: Declare CSS Layers */
+@layer reset, base, components, utilities;
+
+/* ----------------------------------------------------
+   LAYER: RESET
+   ---------------------------------------------------- */
+@layer reset {
+  /* Task 1: Box-sizing & margin reset */
+  *,
+  *::before,
+  *::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    min-block-size: 100vh;
+    line-height: 1.5;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  img, svg {
+    display: block;
+    max-inline-size: 100%;
+  }
+
+  ul {
+    list-style: none;
+  }
+}
+
+/* ----------------------------------------------------
+   LAYER: BASE
+   ---------------------------------------------------- */
+@layer base {
+  /* Task 4: Define tokens on :root using oklch(), color-mix(), light-dark() */
+  :root {
+    color-scheme: light dark;
+
+    /* Base Palette using modern oklch */
+    --color-primary: oklch(0.6 0.22 260);
+    --color-primary-hover: oklch(0.52 0.24 260);
+    
+    --color-light-bg: oklch(0.98 0.005 250);
+    --color-light-surface: oklch(1 0 0);
+    --color-light-text: oklch(0.2 0.02 260);
+    --color-light-border: oklch(0.88 0.01 250);
+
+    --color-dark-bg: oklch(0.15 0.015 260);
+    --color-dark-surface: oklch(0.22 0.02 260);
+    --color-dark-text: oklch(0.95 0.005 250);
+    --color-dark-border: oklch(0.32 0.02 260);
+
+    /* Adaptive Theme Colors via light-dark() */
+    --bg-page: light-dark(var(--color-light-bg), var(--color-dark-bg));
+    --bg-surface: light-dark(var(--color-light-surface), var(--color-dark-surface));
+    --text-main: light-dark(var(--color-light-text), var(--color-dark-text));
+    --border-color: light-dark(var(--color-light-border), var(--color-dark-border));
+
+    /* Color-mix for subtle tints */
+    --accent-tint: color-mix(in oklch, var(--color-primary) 15%, transparent);
+    --text-muted-color: color-mix(in oklch, var(--text-main) 60%, transparent);
+
+    /* Spacing scale */
+    --space-2xs: 0.25rem;
+    --space-xs: 0.5rem;
+    --space-sm: 0.75rem;
+    --space-md: 1rem;
+    --space-lg: 1.5rem;
+    --space-xl: 2rem;
+    --space-2xl: 3rem;
+
+    --radius-sm: 6px;
+    --radius-md: 10px;
+  }
+
+  /* Task 4: Inherited typography on body */
+  body {
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-main);
+  }
+
+  /* Task 4: Form controls inherit typography */
+  input,
+  button,
+  textarea,
+  select {
+    font: inherit;
+    color: inherit;
+  }
+
+  /* Task 1: Constrain main with logical properties */
+  main {
+    inline-size: min(100% - (var(--space-lg) * 2), 72rem);
+    margin-inline: auto;
+    margin-block: var(--space-2xl);
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xl);
+  }
+}
+
+/* ----------------------------------------------------
+   LAYER: COMPONENTS
+   ---------------------------------------------------- */
+@layer components {
+  /* Task 6: Header flex layout (title left, navigation right) */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-inline: var(--space-xl);
+    padding-block: var(--space-md);
+    background-color: var(--bg-surface);
+    border-block-end: 1px solid var(--border-color);
+  }
+
+  .brand {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 1.25rem;
+    font-weight: 700;
+  }
+
+  /* Task 5: SVG icon inheriting currentColor */
+  .icon {
+    color: var(--color-primary);
+  }
+
+  /* Task 6: nav ul flex row with gap */
+  nav ul {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+  }
+
+  /* Task 2: Specificity resolution using :where() */
+  /* Conflicting rules demo: :where() has 0-0-0 specificity */
+  :where(header nav ul li) a {
+    color: var(--text-muted-color);
+  }
+
+  .nav-link {
+    text-decoration: none;
+    font-weight: 500;
+    color: var(--text-main);
+    padding-block: var(--space-2xs);
+    padding-inline: var(--space-xs);
+    border-radius: var(--radius-sm);
+    transition: color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .nav-link:hover,
+  .nav-link:focus-visible {
+    color: var(--color-primary);
+    background-color: var(--accent-tint);
+  }
+
+  /* Task 7: #schedule 2fr 1fr grid */
+  #schedule {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: var(--space-xl);
+    background-color: var(--bg-surface);
+    padding: var(--space-xl);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+  }
+
+  .table-wrapper {
+    overflow-x: auto;
+  }
+
+  .schedule-table {
+    inline-size: 100%;
+    border-collapse: collapse;
+    text-align: start;
+  }
+
+  .schedule-table th,
+  .schedule-table td {
+    padding-block: var(--space-sm);
+    padding-inline: var(--space-md);
+    border-block-end: 1px solid var(--border-color);
+  }
+
+  .schedule-table th {
+    font-weight: 600;
+    color: var(--text-muted-color);
+  }
+
+  .schedule-summary {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-sm);
+    padding: var(--space-lg);
+    background-color: var(--accent-tint);
+    border-radius: var(--radius-sm);
+  }
+
+  /* Task 9 & 10: Interactive booking buttons & selection state */
+  .btn-book {
+    padding-block: var(--space-2xs);
+    padding-inline: var(--space-sm);
+    border-radius: var(--radius-sm);
+    border: 1px solid var(--color-primary);
+    background-color: transparent;
+    color: var(--color-primary);
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s ease;
+  }
+
+  .btn-book:hover {
+    background-color: var(--color-primary);
+    color: white;
+  }
+
+  .btn-book.selected {
+    background-color: var(--color-primary);
+    color: white;
+    box-shadow: 0 0 0 2px var(--bg-surface), 0 0 0 4px var(--color-primary);
+  }
+
+  /* Task 7: Two-column form grid */
+  .booking-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+    background-color: var(--bg-surface);
+    padding: var(--space-xl);
+    border-radius: var(--radius-md);
+    border: 1px solid var(--border-color);
+  }
+
+  .form-group {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-2xs);
+  }
+
+  .form-group label {
+    font-size: 0.875rem;
+    font-weight: 600;
+  }
+
+  input[type="text"],
+  input[type="email"],
+  select,
+  textarea {
+    padding-block: var(--space-xs);
+    padding-inline: var(--space-sm);
+    border: 1px solid var(--border-color);
+    border-radius: var(--radius-sm);
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    transition: border-color 0.2s ease, outline 0.2s ease;
+  }
+
+  input:focus-visible,
+  select:focus-visible,
+  textarea:focus-visible,
+  button:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 1px;
+  }
+
+  fieldset {
+    border: 1px solid var(--border-color);
+    padding: var(--space-md);
+    border-radius: var(--radius-sm);
+  }
+
+  .checkbox-label {
+    display: flex;
+    align-items: center;
+    gap: var(--space-xs);
+    font-size: 0.875rem;
+    cursor: pointer;
+  }
+
+  .btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    border: none;
+    padding-block: var(--space-sm);
+    padding-inline: var(--space-xl);
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background-color: var(--color-primary-hover);
+  }
+}
+
+/* ----------------------------------------------------
+   LAYER: UTILITIES
+   ---------------------------------------------------- */
+@layer utilities {
+  /* Task 3: .text-muted */
+  .text-muted {
+    color: var(--text-muted-color);
+    font-size: 0.875rem;
+  }
+
+  /* Task 7: .span-all across columns */
+  .span-all {
+    grid-column: 1 / -1;
+  }
+}
+
+/* ----------------------------------------------------
+   RESPONSIVENESS (TASK 8)
+   ---------------------------------------------------- */
+/* Task 8: One media query that collapses both grids at 40rem or less */
+@media (max-inline-size: 40rem) {
+  #schedule,
+  .booking-form {
+    grid-template-columns: 1fr;
+  }
+
+  header {
+    flex-direction: column;
+    gap: var(--space-md);
+    align-items: flex-start;
+  }
+}
